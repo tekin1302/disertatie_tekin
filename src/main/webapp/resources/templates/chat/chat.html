@@ -1,0 +1,17 @@
+<div ng-repeat="chat in chats">
+    <div id="chat_{{chat.id}}">
+        <div id="messages_{{chat.id}}" class="mess_history">
+
+        </div>
+        <table class="mess_table">
+            <tr>
+                <td class="current_mess">
+                    <textarea id="mess_{{chat.id}}" ng-keypress="checkEnterPressed($event, chat.id)"></textarea>
+                </td>
+                <td width="60px;">
+                    <button ng-click="send(chat.id)" class="btn btn-default">Trimite</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,124 @@
+<form name="regForm" id="regFormId" >
+    <table class="formTable" id="profileForm" >
+        <tr>
+            <td>
+                <label>E-mail:</label>
+            </td>
+            <td>
+                <input name="email" id="email" class="form-control" ng-model="company.user.email" required type="email" ng-blur="checkEmail(company.user.email)" placeholder="e-mail"/>
+            </td>
+            <td>
+                <div class="error" ng-show="regForm.email.$dirty && regForm.email.$error.email">{{err.invalidEmail}}</div>
+                <div class="error" ng-show="regForm.email.$dirty && regForm.email.$error.required">{{err.required}}</div>
+                <span class="error" ng-show="regForm.email.$dirty && getEmailExists()">{{err.emailExists}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Parola:</label>
+            </td>
+            <td>
+                <input name="password" type="password" class="form-control" ng-model="company.user.password" autocomplete="off" placeholder="parola"/>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Confirma parola:</label>
+            </td>
+            <td>
+                <input name="confirm" class="form-control" ng-required="company.user.password != null && company.user.password.length > 0" type="password" ng-model="company.user.confirm" placeholder="confirma parola"/>
+            </td>
+            <td>
+                <span class="error" ng-show="regForm.confirm.$dirty && regForm.confirm.$error.required">{{err.required}}</span>
+                <span class="error" ng-show="regForm.confirm.$dirty && !passwordsMatch()">{{err.passwordsDontMatch}}</span>
+            </td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+            <td>
+                <label>Nume:</label>
+            </td>
+            <td>
+                <input name="name" class="form-control" ng-model="company.name" required placeholder="nume companie" maxlength="130"/>
+            </td>
+            <td>
+                <span class="error" ng-show="regForm.name.$dirty && regForm.name.$error.required">{{err.required}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Oras:</label>
+            </td>
+            <td>
+                <input name="city" class="form-control" ng-model="company.city" placeholder="oras" maxlength="45" />
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Adresa:</label>
+            </td>
+            <td>
+                <textarea name="address" class="form-control" placeholder="adresa" ng-model="company.address" maxlength="1000"></textarea>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Telefon:</label>
+            </td>
+            <td>
+                <input name="phone" class="form-control" ng-model="company.phone" placeholder="telefon" maxlength="15"/>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Fax:</label>
+            </td>
+            <td>
+                <input name="fax" class="form-control" ng-model="company.fax" placeholder="fax" maxlength="15"/>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Logo:</label>
+            </td>
+            <td>
+                <input type="file" class="form-control" ng-file-select="uploadFile($files)"/>
+            </td>
+            <td>
+                <!--<button ng-click="upload.abort()">Anuleaza!</button>-->
+                <span class="error" ng-show="fileTooLarge">Fisierul depaseste 10 mb!</span>
+                <span class="error" ng-show="fileIsNotImage">Fisierul nu este imagine!</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <img ng-src="{{getLogoPath()}}" ng-show="getLogoPath() != null" style="width: 180px" />
+                <div id="logoProgressBar" ng-show="loadingLogo == true">
+                    <div class="innerProgressBarText">{{prcLoaded}}%</div>
+                    <div class="innerProgressBar" ng-style="getInnerWith()"></div>
+                </div>
+            </td>
+            <td>
+                <button ng-show="company.logo.id != oldLogoId" ng-click="revertLogo()">Anuleaza</button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="button" class="btn btn-default" ng-click="saveUser()" value="Salveaza" />
+            </td>
+        </tr>
+    </table>
+
+</form>

@@ -1,0 +1,30 @@
+<form name="empActForm" id="empActFormId">
+    <table class="formTable" id="empActFormTable" >
+        <tr ng-repeat="employeeActivity in employeeActivities" repeat-over="setupDateInputs">
+            <td>
+                <select data-ng-options="employee.id as employee.name for employee in employees | ignoreFromSelected: {ea: employeeActivities, e:employeeActivity.employee.id} | hasRate" ng-model="employeeActivity.employee.id" class="form-control" ng-change="addSelectInput(employeeActivity, $index)">
+                    <option value="">Alegeti angajat</option>
+                </select>
+            </td>
+            <td>
+                Inceput:
+            </td>
+            <td>
+                 <input id="startDate_{{$index}}" class="date-type form-control" data-ng-model="employeeActivity.start" ng-change="setDateRestrictions($index)"/>
+            </td>
+            <td>
+                Sfarsit:
+            </td>
+            <td>
+                 <input id="endDate_{{$index}}" class="date-type form-control" data-ng-model="employeeActivity.end" ng-change="setDateRestrictions($index)"/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="saveEmployeeActivities()" >Salveaza</button>
+            </td>
+        </tr>
+    </table>
+</form>
+

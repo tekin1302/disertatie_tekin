@@ -1,0 +1,306 @@
+#header {
+	background-color: #F7B64B;
+    width: 100%;
+    float: left;
+}
+
+body {
+	margin: 0;
+    font-family: Verdana,Arial,sans-serif;
+}
+
+#headerIn table {
+	width: 98%;
+}
+
+.logo {
+	height: 90px;
+}
+
+html,body {
+	height: 100%;
+}
+
+input {
+    width: 250px;
+}
+select {
+    width: 250px;
+}
+.t-cbx {
+    width: auto;
+}
+
+textarea {
+    width: 250px;
+    height: 200px;
+}
+#footer {
+	background-color: #F7B64B;
+	width: 100%;
+	text-align: center;
+	height: 25px;
+    float: left;
+}
+
+#headerIn {
+	margin: 0 auto;
+	width: 1000px;
+}
+
+#main {
+	background-color: #DBEAF9;
+    min-height: 100%;
+}
+
+#mainIn {
+	margin: 0 auto;
+	width: 975px;
+    padding-bottom: 25px;
+    padding-top: 120px;
+}
+
+#login_form {
+	margin: 0 auto;
+	padding-top: 30px;
+	width: 300px;
+}
+
+.nice_button {
+	background-color: #E97329;
+	border: 2px solid #F75704;
+	border-radius: 20px 2px 20px 2px;
+	color: #000000;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 3px 8px;
+	text-decoration: none;
+    margin-top: 20px;
+}
+.nice_button_2 {
+	background-color: #65B9E4;
+    border: 2px solid #0A4F99;
+    border-radius: 6px 6px 6px 6px;
+    color: #000000;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 3px 8px;
+    text-decoration: none;
+}
+.menu_item {
+	color: #0A4F99;
+	text-decoration: none;
+	font-weight: bold;
+	padding-left: 60px;
+}
+.prodImg {
+	width: 100px;
+}
+
+h1 {
+    color: #0A4F99;
+    font-size: 21px;
+}
+.info {
+	border: 1px solid #000000;
+    border-radius: 5px 5px 5px 5px;
+    display: none;
+    height: 200px;
+    left: 166px;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    width: 200px;
+}
+
+table {
+    border-collapse: collapse;
+    
+}
+.even {
+	background-color: #F0F0F0;
+}
+.odd {
+	background-color: #FFFFFF;
+}
+.taken {
+	background-color: #EE8B01;
+	height: 20px;
+    width: 20px;
+}
+.empty {
+	background-color: #DBEAF9;
+	height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+.picked {
+	background-color: red;
+	height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.ui-jqgrid tr.jqgrow td {
+    white-space: normal;
+}
+#exceptionsGrid td:nth-child(3) {
+    white-space: nowrap;
+}
+.expanded {
+    white-space: normal !important;
+}
+.contextMenu {
+    display: none;
+}
+.screenshot {
+    background-position: -208px -128px;
+}
+.timesheet {
+    background-position: -80px -112px;
+}
+.employee {
+    background-position: -144px -96px;
+}
+.formTable td {
+    padding: 5px 3px;
+    vertical-align: top;
+
+}
+
+.error:before {
+    background-color: #FFD455;
+    border-color: #73A7F0;
+    border-style: none none solid solid;
+    border-width: 2px;
+    content: " ";
+    display: block;
+    height: 10px;
+    left: -7px;
+    position: absolute;
+    top: 6px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 10px;
+}
+.error {
+    background-color: #FFD455;
+    border: 2px solid #73A7F0;
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+    color: #FF0000;
+    margin-left: 20px;
+    padding: 2px 14px;
+    position: relative;
+    cursor: default;
+    /* no highlight */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#alert {
+    font-size: inherit;
+}
+.progressBar {
+    text-align: center;
+    position: relative;
+    border-radius: 7px;
+    border: 1px solid #000000;
+    color: #222222;
+    overflow: hidden;
+    background-color: #FFFFFF;;
+}
+.innerProgressBar {
+    position: absolute;
+    background: #cccccc url("../img/innerPBBkg.png") 50% 50% repeat-x;
+    border-radius: inherit;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.innerProgressBarText {
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+.t-action-button {
+    cursor: pointer;
+    border: 1px solid #FFFFFF;
+}
+.t-action-button:hover {
+    background-color: #CCCCCC;
+    border: 1px solid;
+}
+.ui-jqgrid .ui-jqgrid-titlebar {
+    height: 15px;
+}
+
+.employee-node {
+    border: 1px solid;
+    margin-bottom: 10px;
+    padding: 5px;
+    height: 150px;
+    cursor: default;
+    z-index: 99;
+    border-radius: 10px;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #515151;
+    /*-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;
+    */
+}
+td {
+    vertical-align: top;
+}
+.connection-wrap {
+    cursor: move;
+    fill: none;
+    opacity: 0;
+    stroke: #000000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 15;
+}
+.connection-wrap:hover {
+    opacity: 0.4;
+    stroke-opacity: 0.4;
+}
+.marker:hover {
+    fill: "#1ABC9C";
+    cursor: crosshair;
+}
+#diagram-stage {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #d3d3d3;
+}
+.mess_history {
+    border: 1px solid;
+    height: 250px;
+    width: 100%;
+    background-color: #FFFFFF;
+    overflow: scroll;
+}
+.mess_table {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.mess_table tr {
+    border: 1px solid;
+}
+.current_mess textarea {
+    width: 100%;
+    height: 50px;
+}
+.btn {
+    width: auto;
+}
+#timespan {
+    height: 10px;
+    background: #ac2925;
+}

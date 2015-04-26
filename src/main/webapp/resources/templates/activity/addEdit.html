@@ -1,0 +1,57 @@
+<form name="actForm" id="actFormId">
+    <table class="formTable" id="actFormTable" >
+        <tr>
+            <td>
+                <label>Nume(*):</label>
+            </td>
+            <td>
+                <input name="name" id="name" class="form-control" ng-model="activity.name" required placeholder="nume" maxlength="100"/>
+            </td>
+            <td>
+                <div class="error" ng-show="actForm.name.$dirty && actForm.name.$error.required">{{err.required}}</div>
+                <div class="error" ng-show="actForm.name.$dirty && actForm.name.$error.maxLength">{{err.maxLength100}}</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Descriere:</label>
+            </td>
+            <td>
+                <textarea name="description" id="description" data-ng-model="activity.description" maxlength="2000" class="form-control" placeholder="descriere" ></textarea>
+            </td>
+            <td>
+                <div class="error" ng-show="actForm.description.$dirty && actForm.description.$error.required">{{err.required}}</div>
+                <div class="error" ng-show="actForm.description.$dirty && actForm.description.$error.maxLength">{{err.maxLength2000}}</div>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Valoare (&euro;):</label>
+            </td>
+            <td>
+                <input name="value" id="value" class="form-control" data-ng-model="activity.value" placeholder="valoare" smart-float/>
+            </td>
+            <td>
+                <span class="error" ng-show="actForm.value.$dirty && actForm.value.$error.float">{{err.floatInvalid}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Durata (ore):</label>
+            </td>
+            <td>
+                <input name="duration" id="duration" class="form-control" data-ng-model="activity.duration" placeholder="durata" smart-float/>
+            </td>
+            <td>
+                <span class="error" ng-show="actForm.duration.$dirty && actForm.duration.$error.float">{{err.floatInvalid}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="saveActivity(actForm)" >Salveaza</button>
+            </td>
+        </tr>
+    </table>
+</form>

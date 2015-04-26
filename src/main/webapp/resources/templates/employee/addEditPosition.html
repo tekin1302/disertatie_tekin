@@ -1,0 +1,32 @@
+<form name="positionForm" id="positionFormId" >
+    <table class="formTable" id="positionFormTable" >
+        <tr>
+            <td>
+                <label>Nume:</label>
+            </td>
+            <td>
+                <input name="name" ng-model="position.name" class="form-control" required placeholder="nume functie" maxlength="150"/>
+            </td>
+            <td>
+                <span class="error" ng-show="positionForm.name.$dirty && positionForm.name.$error.required">{{err.required}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Descriere:</label>
+            </td>
+            <td>
+                <textarea name="description" placeholder="descriere" class="form-control" ng-model="position.description" maxlength="1000"></textarea>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="savePosition(positionForm)" >Salveaza</button>
+            </td>
+        </tr>
+    </table>
+
+</form>

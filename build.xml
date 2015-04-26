@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="disertatie" default="hot-deploy" basedir=".">
+
+	<property name="src.dir" value="${basedir}/src" />
+    <property name="jsp.dir.from" value="${basedir}/src/main/webapp/WEB-INF/pages" />
+    <property name="jsp.dir.to" value="${basedir}/target/Disertatie/WEB-INF/pages" />
+
+    <property name="resources.dir.from" value="${basedir}/src/main/webapp/resources" />
+    <property name="resources.dir.to" value="${basedir}/target/Disertatie/resources" />
+
+    <target name="hot-deploy">
+        <copydir src="${jsp.dir.from}"
+                 dest="${jsp.dir.to}"
+                 forceoverwrite="true"
+                />
+
+        <copydir src="${resources.dir.from}"
+                 dest="${resources.dir.to}"
+                 forceoverwrite="true"
+                />
+
+    </target>
+
+</project>

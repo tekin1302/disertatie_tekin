@@ -1,0 +1,146 @@
+<form name="empForm" id="empFormId">
+    <table class="formTable" id="employeeFormTable" >
+        <tr>
+            <td>
+                <label>E-mail:</label>
+            </td>
+            <td>
+                <input name="email" id="email" class="form-control" ng-model="employee.user.email" required type="email" ng-blur="checkEmail(employee.user.email)" placeholder="e-mail" maxlength="100"/>
+            </td>
+            <td>
+                <div class="error" ng-show="empForm.email.$dirty && empForm.email.$error.email">{{err.invalidEmail}}</div>
+                <div class="error" ng-show="empForm.email.$dirty && empForm.email.$error.required">{{err.required}}</div>
+                <span class="error" ng-show="empForm.email.$dirty && getEmailExists()">{{err.emailExists}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Parola:</label>
+            </td>
+            <td>
+                <input name="password" type="password" class="form-control" ng-required="employee.user.id == null" ng-model="employee.user.password" autocomplete="off" placeholder="parola" maxlength="100"/>
+            </td>
+            <td>
+                <div class="error" ng-show="empForm.password.$dirty && empForm.password.$error.required">{{err.required}}</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Confirma parola:</label>
+            </td>
+            <td>
+                <input name="confirm" type="password" class="form-control" ng-required="employee.user.password != null && employee.user.password.length > 0" ng-model="employee.user.confirm" placeholder="confirma parola" maxlength="100"/>
+            </td>
+            <td>
+                <div class="error" ng-show="empForm.confirm.$dirty && empForm.confirm.$error.required">{{err.required}}</div>
+                <span class="error" ng-show="empForm.confirm.$dirty && !passwordsMatch()">{{err.passwordsDontMatch}}</span>
+            </td>
+        </tr>
+        <tr><td></td></tr>
+        <tr>
+            <td>
+                <label>Nume:</label>
+            </td>
+            <td>
+                <input name="name" ng-model="employee.name" class="form-control" required placeholder="nume angajat" maxlength="100"/>
+            </td>
+            <td>
+                <span class="error" ng-show="empForm.name.$dirty && empForm.name.$error.required">{{err.required}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Functie:</label>
+            </td>
+            <td>
+                <select name="position" required class="form-control" ng-model="employee.position.id"
+                        ng-options="position.id as position.name for position in positions">
+                    <option value="">Alegeti functia</option>
+                </select>
+            </td>
+            <td>
+                <span class="error" ng-show="empForm.position.$dirty && empForm.position.$error.required">{{err.required}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <table class="ui-pg-table navtable">
+                    <tr>
+                        <td title="Adauga" ng-click="addPosition()">
+                            <div class="ui-pg-div"><span class="ui-icon ui-icon-plus t-action-button"></span></div>
+                        </td>
+                        <td title="Modifică" ng-click="editPosition()">
+                            <div class="ui-pg-div"><span class="ui-icon ui-icon-pencil t-action-button"></span></div>
+                        </td>
+                        <td title="Șterge" ng-click="deletePosition()">
+                            <div class="ui-pg-div"><span class="ui-icon ui-icon-trash t-action-button"></span></div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <label>Salariu (&euro;/h):</label>
+            </td>
+            <td>
+                <input name="rate" class="form-control" ng-model="employee.rate" placeholder="salariu" maxlength="15"/>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Telefon:</label>
+            </td>
+            <td>
+                <input name="phone" class="form-control" ng-model="employee.phone" placeholder="telefon" maxlength="15"/>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Poza:</label>
+            </td>
+            <td>
+                <input type="file" class="form-control" ng-file-select="uploadFile($files)"/>
+            </td>
+            <td>
+                <span class="error" ng-show="fileTooLarge">Fisierul depaseste 10 mb!</span>
+                <span class="error" ng-show="fileIsNotImage">Fisierul nu este imagine!</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <img ng-src="{{getPhotoPath()}}" ng-show="getPhotoPath() != null" style="width: 180px" />
+                <div id="photoProgressBar" ng-show="loadingPhoto == true">
+                    <div class="innerProgressBarText">{{prcLoaded}}%</div>
+                    <div class="innerProgressBar" ng-style="getInnerWith()"></div>
+                </div>
+            </td>
+            <td>
+                <button ng-show="employee.photo != null && employee.photo.id != oldPhotoId" ng-click="revertPhoto()">Anuleaza</button>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="saveEmployee(empForm)" >Salveaza</button>
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+<script>
+    // setup progress bar
+    $(document).ready(function() {
+        tProgressBar({elemId: "photoProgressBar", proc: angular.element("#employeesGrid").scope().prcLoaded});
+    });
+</script>
+<div id="addEditPositionDialog" ng-include="'resources/templates/employee/addEditPosition.html'"
+     style="display: none;"></div>

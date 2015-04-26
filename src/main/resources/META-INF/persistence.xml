@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+ http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+
+    <persistence-unit name="DISERTATIE" transaction-type="RESOURCE_LOCAL">
+        <class>ro.tekin.disertatie.entity.User</class>
+        <class>ro.tekin.disertatie.entity.TException</class>
+        <class>ro.tekin.disertatie.entity.Company</class>
+        <class>ro.tekin.disertatie.entity.Employee</class>
+        <class>ro.tekin.disertatie.entity.TException</class>
+        <class>ro.tekin.disertatie.entity.Position</class>
+        <class>ro.tekin.disertatie.entity.Organigram</class>
+        <class>ro.tekin.disertatie.entity.OrganigramElement</class>
+        <class>ro.tekin.disertatie.entity.ChatMember</class>
+        <class>ro.tekin.disertatie.entity.ChatRoom</class>
+    </persistence-unit>
+
+</persistence>

@@ -1,0 +1,53 @@
+<form name="tsForm" id="tsFormId">
+    <table class="formTable" id="tsFormTable" >
+        <tr>
+            <td>
+                <label>Activitate:</label>
+            </td>
+            <td>
+                <input name="activity" id="activity" class="form-control" ng-model="activityName" ng-disabled="true"/>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Numar ore (*):</label>
+            </td>
+            <td>
+                <input name="hours" id="hours" class="form-control" ng-model="timesheet.hours" required smart-float placeholder="numar ore" ng-disabled="isreadonly"/>
+            </td>
+            <td>
+                <div class="error" ng-show="tsForm.hours.$dirty && tsForm.hours.$error.required">{{err.required}}</div>
+                <span class="error" ng-show="tsForm.hours.$dirty && tsForm.hours.$error.float">{{err.floatInvalid}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Descriere:</label>
+            </td>
+            <td>
+                <textarea name="description" id="description" class="form-control" ng-model="timesheet.description" placeholder="descriere" ng-disabled="isreadonly"> </textarea>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Data:</label>
+            </td>
+            <td>
+                <input name="date" id="date" class="form-control" ng-model="timesheet.date" placeholder="data" custom-js="setDatepicker" ng-disabled="isreadonly"/>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="button" class="btn btn-default" ng-click="saveTimesheet(tsForm)" ng-show="!isreadonly">Salveaza</button>
+            </td>
+        </tr>
+    </table>
+</form>
+

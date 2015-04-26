@@ -1,0 +1,25 @@
+<table id="activitiesGrid"></table>
+<div id="pager"></div>
+
+<div id="addEditActivityDialog" ng-include src="addEditActivityFile" style="display: none;" ></div>
+</div>
+<div id="addEditEmployeeActivityDialog" ng-include src="associationFile" style="display: none;" ></div>
+</div>
+<div ng-show="statistics != null" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-md-4" style="text-align: left">{{dateFormatted(min)}}</div>
+        <div class="col-md-4" style="text-align: center"> Perioada maxima asignare </div>
+        <div class="col-md-4" style="text-align: right">{{dateFormatted(max)}}</div>
+    </div>
+    <div id="timespan" ></div>
+
+    <div data-ng-repeat="stat in statistics">
+        <div>{{stat.employeeName}}</div>
+        <div data-ng-style="getStatStyle(stat)">
+            <div style="background-color: #008000; height: 10px;">
+            </div>
+        </div>
+    </div>
+
+</div>
+

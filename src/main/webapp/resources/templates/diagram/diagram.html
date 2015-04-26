@@ -1,0 +1,46 @@
+<button ng-click="drawLinesFunc()" ng-class="getLinieClass()">Linie</button>
+<button ng-click="saveOrganigram()" class="btn btn-default" >Salveaza</button>
+<button ng-click="createChatRoom()" class="btn btn-default" >Creeaza grupuri de discutii</button>
+
+<table style="width: 100%; height: 800px;" id="stage-container">
+    <tr>
+        <td width="140px">
+            <div id="employee-list">
+                <div ng-repeat="employee in employees" class="employee-node" repeat-over="makeDraggable" onmousedown='return false;'
+                     id="emp_{{employee.id}}" ng-mousedown="dl.tMouseDown($event, employee)" ng-mouseup="dl.tMouseUp($event)" ng-mousemove="dl.tMouseMove($event)">
+                    {{employee.name}}
+                    <div style="text-align: center;"><img ng-src="{{getImgPath(employee.photo.id)}}" style="height: 100px;"/></div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div id="diagram-stage" ng-mousedown="dl.tMouseDown($event)" ng-mouseup="dl.tMouseUp($event)" ng-mousemove="dl.tMouseMove($event)" >
+                <svg height="100%" width="100%" >
+
+                    <g ng-repeat="line in lines track by line.id" repeat-over="redrawLines">
+                        <path class="connection" stroke="black" d="M {{line.x1}} {{line.y1}} {{line.x2}} {{line.y2}}"/>
+                        <path onmousedown="return false" ng-mouseenter="dl.tMouseEnter(line)" ng-mouseleave="dl.tMouseLeave()"
+                              ng-mousedown="lm.tMouseDown(line, $event)" ng-mousemove="lm.tMouseMove($event)" ng-show="!dl.mouseDown && !el.mouseDown"
+                              class="connection-wrap" id="line-wrap_{{line.id}}"
+                              d="M {{line.x1}} {{line.y1}} {{line.x2}} {{line.y2}}"/>
+                        <g>
+                        <circle id="l1_{{line.id}}" onmousedown="return false" ng-mouseenter="el.tMouseEnter()" ng-mouseleave="el.tMouseLeave()" ng-mousedown="el.tMouseDown1(line, $event)" ng-mouseup="el.tMouseUp()" class="marker"
+                                cx="{{line.x1}}" cy="{{line.y1}}" r="{{radius}}" stroke="black" stroke-width="3" fill="black" />
+                        </g>
+                        <g>
+                        <circle id="l2_{{line.id}}" onmousedown="return false" ng-mouseenter="el.tMouseEnter()" ng-mouseleave="el.tMouseLeave()" ng-mousedown="el.tMouseDown2(line, $event)" ng-mouseup="el.tMouseUp()" class="marker"
+                                cx="{{line.x2}}" cy="{{line.y2}}" r="{{radius}}" stroke="black" stroke-width="3" fill="black" />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="contextMenu" id="lineMenu">
+    <ul>
+        <li id="delete"> Delete</li>
+    </ul>
+
+</div>
